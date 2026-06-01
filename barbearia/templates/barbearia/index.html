@@ -1,0 +1,13 @@
+{% extends "global/base.html" %}
+{% block content %}
+    <h1>Home</h1>
+    <p>Aqui teremos a apresentação dos barbeiros e fotos de alguns cortes.</p>
+    {% if agendamentos %}
+        <div class="agendamentos">
+            <h2>Proximos Agendamentos</h2>
+            {% for agendamento in agendamentos %}
+                <p><a href="{% url "barbearia:agendamento_detail" agendamento.id %}">{{agendamento.id}}</a> | {{ agendamento.date }} | {{ agendamento.category }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock content %}

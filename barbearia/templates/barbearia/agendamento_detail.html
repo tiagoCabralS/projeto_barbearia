@@ -1,0 +1,8 @@
+{% extends "global/base.html" %}
+{% block content %}
+    <h1>Detalhes do Agendamento</h1>
+    <p>ID: {{ agendamento.id }}</p>
+    <p>Data: {{ agendamento.date }}</p>
+    <p>Categoria: {{ agendamento.category }}</p>
+    <p>Barbeiro: {{ agendamento.barbeiro }}</p>
+{% endblock content %}

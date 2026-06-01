@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+.header {
+    width: 100%;
+    background-color: #f9f9f9;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.header-heading {
+    background-color: #007BFF;
+    padding: 10px 15px;
+}
+.menu-list{
+    display: flex;
+}
+.menu-item{
+    margin-left: 20px;
+    background-color: #007BFF;
+    padding: 10px 15px;
+}
+.agendamentos{
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
