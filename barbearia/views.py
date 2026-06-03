@@ -1,14 +1,25 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from barbearia.models import Agendamento
+from barbearia.forms import AgendamentoForm
+from django.utils import timezone
 
 # Create your views here.
 
 def home(request):
-    agendamentos = Agendamento.objects.all().order_by('date')
+    agendamentos_prox = Agendamento\
+        .objects\
+        .filter(date__gte=timezone.now())\
+        .order_by('date')
+    
+    agendamentos_pass = Agendamento\
+        .objects\
+        .filter(date__lt=timezone.now())\
+        .order_by('date')
     
     context = {
         'site_title': 'Home - ',
-        'agendamentos': agendamentos,
+        'agendamentos': [agendamentos_prox, agendamentos_pass],
     }
     
     return render(
@@ -18,7 +29,27 @@ def home(request):
         )
 
 def agendar(request):
+    from_action = reverse('barbearia:agendar')
+    
+    if request.method == 'POST':
+        form = AgendamentoForm(request.POST)
+        
+        context = {
+            'from_action': from_action,
+            'form': form,
+        }
+        if form.is_valid():
+            form.save()
+            return redirect('barbearia:home')
+        
+        return render(
+            request, 
+            'barbearia/agendar.html',
+            context
+        )
+    
     context = {
+        'form': AgendamentoForm(),
         'site_title': 'Agendar - ',
     }
     

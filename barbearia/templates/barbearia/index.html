@@ -5,7 +5,13 @@
     {% if agendamentos %}
         <div class="agendamentos">
             <h2>Proximos Agendamentos</h2>
-            {% for agendamento in agendamentos %}
+            {% for agendamento in agendamentos.0 %}
+                <p><a href="{% url "barbearia:agendamento_detail" agendamento.id %}">{{agendamento.id}}</a> | {{ agendamento.date }} | {{ agendamento.category }}</p>
+            {% endfor %}
+        </div>
+        <div class="agendamentos">
+            <h2>Agendamentos Passados</h2>
+            {% for agendamento in agendamentos.1 %}
                 <p><a href="{% url "barbearia:agendamento_detail" agendamento.id %}">{{agendamento.id}}</a> | {{ agendamento.date }} | {{ agendamento.category }}</p>
             {% endfor %}
         </div>
