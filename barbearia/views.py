@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from barbearia.models import Agendamento
 from barbearia.forms import AgendamentoForm
@@ -72,3 +72,26 @@ def agendamento_detail(request, agendamento_id):
         'barbearia/agendamento_detail.html',
         context
         )
+    
+def agendamento_delete(request, agendamento_id):
+    agendamento = get_object_or_404(
+        Agendamento,
+        id=agendamento_id
+    )
+    
+    confirmation = request.POST.get('confirmation', 'no')
+    print('Confirmation: ', confirmation)
+    
+    if confirmation == 'yes':
+        agendamento.delete()
+        return redirect('barbearia:home')
+    
+    return render(
+        request,
+        'barbearia/agendamento_detail.html',
+        {
+            'site_title': f'Excluir Agendamento {agendamento_id} - ',
+            'agendamento': agendamento,
+            'confirmation': confirmation,
+        }
+    )
