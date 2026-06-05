@@ -11,6 +11,7 @@
     padding: 20px;
     display: flex;
     justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .header-heading {
     background-color: #007BFF;
@@ -30,4 +31,34 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
+}
+.agendamento-info{
+    margin: auto;
+    width: 70%;
+    padding: 30px;
+    text-align: center;
+    background-color: #ccc;
+}
+.button-delete{
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 10px;
+}
+.button-delete:hover{
+    background-color: #680d16;
+}
+.errorlist{
+    margin: auto;
+    color: white;
+    background-color: #dc3545;
+    width:fit-content;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    list-style-type: none;
 }
