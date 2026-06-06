@@ -3,6 +3,10 @@ from django.urls import reverse
 from barbearia.models import Agendamento
 from barbearia.forms import AgendamentoForm
 from django.utils import timezone
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import auth, messages
+from django.contrib.auth.decorators import login_required
+from barbearia.forms import UserRegistrationForm
 
 # Create your views here.
 
@@ -28,6 +32,7 @@ def home(request):
         context
         )
 
+@login_required(login_url='barbearia:login')
 def agendar(request):
     from_action = reverse('barbearia:agendar')
     
@@ -58,7 +63,45 @@ def agendar(request):
         'barbearia/agendar.html',
         context
         )
+    
+@login_required(login_url='barbearia:login')
+def agendamento_update(request, agendamento_id):
+    agendamento = get_object_or_404(
+        Agendamento,
+        id=agendamento_id
+    )
+    
+    from_action = reverse('barbearia:update', args=[agendamento_id])
+    
+    if request.method == 'POST':
+        form = AgendamentoForm(request.POST, instance=agendamento)
+        
+        context = {
+            'from_action': from_action,
+            'form': form,
+        }
+        if form.is_valid():
+            form.save()
+            return redirect('barbearia:home')
+        
+        return render(
+            request, 
+            'barbearia/agendar.html',
+            context
+        )
+    
+    context = {
+        'form': AgendamentoForm(instance=agendamento),
+        'site_title': f'Atualizar Agendamento {agendamento_id} - ',
+    }
+    
+    return render(
+        request, 
+        'barbearia/agendar.html',
+        context
+        )
 
+@login_required(login_url='barbearia:login')
 def agendamento_detail(request, agendamento_id):
     agendamento = Agendamento.objects.get(id=agendamento_id)
     
@@ -72,7 +115,8 @@ def agendamento_detail(request, agendamento_id):
         'barbearia/agendamento_detail.html',
         context
         )
-    
+ 
+@login_required(login_url='barbearia:login')   
 def agendamento_delete(request, agendamento_id):
     agendamento = get_object_or_404(
         Agendamento,
@@ -95,3 +139,53 @@ def agendamento_delete(request, agendamento_id):
             'confirmation': confirmation,
         }
     )
+    
+def register(request):
+    form = UserRegistrationForm()
+    
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Registro realizado com sucesso! Agora você pode fazer login.')
+            return redirect('barbearia:login')
+        messages.error(request, 'Registro falhou. Verifique os erros e tente novamente.')
+    
+    return render(
+        request,
+        'barbearia/register.html',
+        {
+            'site_title': 'Register - ',
+            'form': form
+        }
+    )
+    
+def login(request):
+    form = AuthenticationForm(request)
+    
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        
+        if form.is_valid():
+            user = form.get_user()
+            auth.login(request, user)
+            messages.success(request, 'Login realizado com sucesso!')
+            return redirect('barbearia:home')
+        messages.error(request, 'Login falhou. Verifique suas credenciais e tente novamente.')
+        
+    
+    return render(
+        request,
+        'barbearia/login.html',
+        {
+            'site_title': 'Login - ',
+            'form': form
+        }
+    )
+
+@login_required(login_url='barbearia:login')    
+def logout(request):
+    auth.logout(request)
+    messages.info(request, 'Logout realizado com sucesso!')
+    return redirect('barbearia:login')

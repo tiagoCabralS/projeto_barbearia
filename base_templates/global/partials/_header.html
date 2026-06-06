@@ -14,14 +14,14 @@
                         <a href="" class="menu-link">Profile</a>
                     </li>
                     <li class="menu-item">
-                        <a href="" class="menu-link">Logout</a>
+                        <a href="{% url "barbearia:logout" %}" class="menu-link">Logout</a>
                     </li>
                 {% else %}
                     <li class="menu-item">
-                        <a href="" class="menu-link">Login</a>
+                        <a href="{% url "barbearia:login" %}" class="menu-link">Login</a>
                     </li>
                     <li class="menu-item">
-                        <a href="" class="menu-link">Register</a>
+                        <a href="{% url "barbearia:register" %}" class="menu-link">Register</a>
                     </li>
                 {% endif %}
             </ul>

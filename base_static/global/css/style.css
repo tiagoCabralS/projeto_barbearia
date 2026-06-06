@@ -16,6 +16,7 @@
 .header-heading {
     background-color: #007BFF;
     padding: 10px 15px;
+    border-radius: 5px;
 }
 .menu-list{
     display: flex;
@@ -24,6 +25,8 @@
     margin-left: 20px;
     background-color: #007BFF;
     padding: 10px 15px;
+    border-radius: 5px;
+    list-style-type: none;
 }
 .agendamentos{
     margin-top: 20px;
@@ -39,7 +42,14 @@
     text-align: center;
     background-color: #ccc;
 }
-.button-delete{
+.btn{
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 10px;
+}
+.btn-delete{
     background-color: #dc3545;
     color: white;
     border: none;
@@ -48,7 +58,7 @@
     cursor: pointer;
     margin: 10px;
 }
-.button-delete:hover{
+.btn-delete:hover{
     background-color: #680d16;
 }
 .errorlist{
@@ -61,4 +71,21 @@
     margin-top: 10px;
     margin-bottom: 10px;
     list-style-type: none;
+}
+.btn_azuis{
+    background-color: #354edc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 10px;
+    
+}
+.btn_azuis:hover{
+    background-color: #0d1a68;
+}
+.botoes{
+    display: flex;
+    justify-content: center;
 }
