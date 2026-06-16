@@ -3,8 +3,8 @@
     <div class="form-content">
         {% for field in form %}
         <div class="form-group">
-            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
             {{ field }}
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
             {% if field.errors %}
             <div class="error">{{ field.errors }}</div>
             {% endif %}
@@ -13,10 +13,20 @@
             {% endif %}
         </div>
         {% endfor %}
+        {% if form.non_field_errors %}
+        <div class="form-content">
+            <div class="form-group">
+                <div class="message error">
+                    {{ form.non_field_errors }}
+                    <!-- Exibe mensagens de erro que não estão associadas a um campo específico -->
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
     <div class="form-content">
         <div class="form-group">
-            <button class="btn btn_send" type="submit">Send</button>
+            <button class="btn btn_send btn_azuis" type="submit">Send</button>
         </div>
     </div>
 </form>
