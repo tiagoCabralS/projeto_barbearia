@@ -1,19 +1,21 @@
 {% extends "global/base.html" %}
 {% block content %}
-    <h1>Home</h1>
-    <p>Aqui teremos a apresentação dos barbeiros e fotos de alguns cortes.</p>
-    {% if agendamentos %}
-        <div class="agendamentos">
-            <h2>Proximos Agendamentos</h2>
-            {% for agendamento in agendamentos.0 %}
-                <p><a href="{% url "barbearia:agendamento_detail" agendamento.id %}">{{agendamento.id}}</a> | {{ agendamento.date }} | {{ agendamento.category }}</p>
-            {% endfor %}
-        </div>
-        <div class="agendamentos">
-            <h2>Agendamentos Passados</h2>
-            {% for agendamento in agendamentos.1 %}
-                <p><a href="{% url "barbearia:agendamento_detail" agendamento.id %}">{{agendamento.id}}</a> | {{ agendamento.date }} | {{ agendamento.category }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
+    <div class="agendamento-info">
+        <h1>Home</h1>
+        {% include "barbearia/partials/presentation.html" %}
+        {% if agendamentos %}
+            <div class="agendamentos">
+                <h2>Proximos Agendamentos</h2>
+                {% for agendamento in agendamentos.0 %}
+                    <p><a href="{% url "barbearia:agendamento_detail" agendamento.id %}">{{agendamento.id}}</a> | {{ agendamento.date }} | {{ agendamento.category }}</p>
+                {% endfor %}
+            </div>
+            <div class="agendamentos">
+                <h2>Agendamentos Passados</h2>
+                {% for agendamento in agendamentos.1 %}
+                    <p><a href="{% url "barbearia:agendamento_detail" agendamento.id %}">{{agendamento.id}}</a> | {{ agendamento.date }} | {{ agendamento.category }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
 {% endblock content %}
