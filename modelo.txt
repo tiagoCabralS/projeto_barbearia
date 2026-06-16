@@ -1,0 +1,53 @@
+-----------------------------------------------------
+| LOGO                     Início | Barbeiros | Agendar |
+-----------------------------------------------------
+
+            [Imagem de destaque da barbearia]
+
+      "Estilo, tradição e precisão em cada corte"
+
+     [ Agendar Horário ]
+
+-----------------------------------------------------
+                    SOBRE A BARBEARIA
+-----------------------------------------------------
+
+  Texto de apresentação
+  Foto do ambiente ao lado
+
+-----------------------------------------------------
+                 NOSSOS BARBEIROS
+-----------------------------------------------------
+
++-------------+   +-------------+   +-------------+
+|   Foto      |   |   Foto      |   |   Foto      |
+| João Silva  |   | Lucas Lima  |   | Pedro Costa |
+| Especial... |   | Fade Expert |   | Barba e...  |
+| Saiba Mais  |   | Saiba Mais  |   | Saiba Mais  |
++-------------+   +-------------+   +-------------+
+
+-----------------------------------------------------
+                 POR QUE NOS ESCOLHER?
+-----------------------------------------------------
+
+✓ Profissionais especializados
+
+✓ Atendimento personalizado
+
+✓ Ambiente climatizado
+
+✓ Produtos de alta qualidade
+
+✓ Agendamento online
+
+-----------------------------------------------------
+                PRONTO PARA RENOVAR O VISUAL?
+-----------------------------------------------------
+
+        Agende seu horário em poucos cliques.
+
+           [ AGENDAR AGORA ]
+
+-----------------------------------------------------
+         Endereço | Telefone | Instagram
+-----------------------------------------------------
