@@ -1,21 +1,10 @@
-{% extends "global/base.html" %}
+{% extends 'global/base.html' %}
 {% block content %}
-    <div class="agendamento-info">
-        <h1>Home</h1>
-        {% include "barbearia/partials/index/inicio.html" %}
-        {% if agendamentos %}
-            <div class="agendamentos">
-                <h2>Proximos Agendamentos</h2>
-                {% for agendamento in agendamentos.0 %}
-                    <p><a href="{% url "barbearia:agendamento_detail" agendamento.id %}">{{agendamento.id}}</a> | {{ agendamento.date }} | {{ agendamento.category }}</p>
-                {% endfor %}
-            </div>
-            <div class="agendamentos">
-                <h2>Agendamentos Passados</h2>
-                {% for agendamento in agendamentos.1 %}
-                    <p><a href="{% url "barbearia:agendamento_detail" agendamento.id %}">{{agendamento.id}}</a> | {{ agendamento.date }} | {{ agendamento.category }}</p>
-                {% endfor %}
-            </div>
-        {% endif %}
-    </div>
-{% endblock content %}
+  <div class="">
+    {% include 'barbearia/partials/index/inicio.html' %}
+    {% include "barbearia/partials/index/sobre.html" %}
+    {% comment %} {% if agendamentos %}
+      {% include 'barbearia/partials/index/agendamentos.html' %}
+    {% endif %} {% endcomment %}
+  </div>
+{% endblock %}

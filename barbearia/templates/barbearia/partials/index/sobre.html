@@ -1,0 +1,12 @@
+{% load static %}
+<div class="normal">
+  <div class="normal-group">
+      <div class="paragrafos">
+        <p>Mais do que um lugar para cortar o cabelo ou aparar a barba, nossa barbearia foi criada para oferecer uma experiência completa de cuidado, conforto e estilo. Contamos com profissionais qualificados, atendimento personalizado e um ambiente moderno e acolhedor, pensado para que cada cliente se sinta à vontade desde o momento em que entra.</p>
+        <p>Aqui, cada corte é realizado com atenção aos detalhes e às preferências de cada pessoa, unindo técnicas tradicionais e tendências atuais para garantir um resultado que valorize seu estilo. Seja para um corte clássico, um visual moderno, o cuidado com a barba ou um acabamento impecável, estamos preparados para oferecer um serviço de alta qualidade.</p>
+        <p>Nosso compromisso é proporcionar excelência no atendimento, pontualidade e um ambiente agradável, onde você pode relaxar enquanto recebe um serviço feito com dedicação e profissionalismo. Agende seu horário e venha descobrir por que nossa barbearia é o lugar ideal para renovar seu visual e elevar sua autoestima.</p>
+      </div>
+      <img src="{% static 'global/imagens/ambiente-1.jpg' %}" alt="Ambiente da barbearia" />
+  </div>
+  <a href="{% url "barbearia:agendar" %}" class="btn btn_azuis">Agendar Horário</a>
+</div>
