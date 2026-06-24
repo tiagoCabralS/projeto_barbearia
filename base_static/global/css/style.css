@@ -1,71 +1,85 @@
-:root{
+:root {
     --azul: #203740;
     --bege: #F2D0BD;
     --laranja: #F26D3D;
     --ver_escuro: #400101;
     --ver_claro: #BF3939;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
 }
-body{
+
+body {
     background-color: var(--ver_escuro);
 }
+
 .header {
+    height: 13vh;
     width: 100%;
-    background-color: #f9f9f9;
-    position: relative;
+    background-color: var(--azul);
+    position: fixed;
+    top: 0;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .header-heading {
     background-color: var(--ver_claro);
     padding: 10px 15px;
     border-radius: 5px;
 }
-.header-heading > a{
+
+.header-heading>a {
     color: white;
 }
-.menu-list{
+
+.menu-list {
     display: flex;
 }
-.menu-item{
+
+.menu-item {
     margin-left: 20px;
     background-color: var(--ver_claro);
     padding: 10px 15px;
     border-radius: 5px;
     list-style-type: none;
 }
-.menu-item > a{
+
+.menu-item>a {
     color: white;
 }
-.agendamentos{
+
+.agendamentos {
     margin-top: 20px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
 }
-.agendamento-info{
+
+.agendamento-info {
     margin: auto;
     width: 70%;
     padding: 30px;
     text-align: center;
     background-color: #ccc;
 }
-.btn{
+
+.btn {
     border: none;
     border-radius: 5px;
     padding: 10px 15px;
     cursor: pointer;
     margin: 10px;
 }
-.btn-delete{
+
+.btn-delete {
     background-color: #dc3545;
     color: white;
     border: none;
@@ -74,39 +88,47 @@ body{
     cursor: pointer;
     margin: 10px;
 }
-.btn-delete:hover{
+
+.btn-delete:hover {
     background-color: #680d16;
 }
-.errorlist{
+
+.errorlist {
     margin: auto;
     color: white;
     background-color: #dc3545;
-    width:fit-content;
+    width: fit-content;
     padding: 10px;
     border-radius: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
     list-style-type: none;
 }
-.btn_azuis{
+
+.btn_azuis {
     background-color: var(--ver_claro);
     color: white;
 }
-.btn_azuis:hover{
+
+.btn_azuis:hover {
     background-color: var(--ver_escuro);
 }
-.botoes{
+
+.botoes {
     display: flex;
     justify-content: center;
 }
-.form-content{
+
+.form-content {
     padding: 10px;
     background-color: white;
 }
-.form-group{
+
+.form-group {
     position: relative;
 }
-label{
+
+label {
     padding: 0 5px;
     position: absolute;
     transform: translateY(-50%);
@@ -117,15 +139,25 @@ label{
     padding: 0 4px;
     background-color: white;
 }
+
 input:focus~label,
-input:valid~label{
+input:valid~label {
     top: 8%;
 }
-.form-group > input{
+
+.form-group>input {
     margin: 10px;
     padding: 10px;
 }
-.imagem{
+
+.imagem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: xx-large;
+    position: static;
+    height: 100vh;
     background-color: rgb(82, 82, 82);
     color: white;
     box-shadow: inset 1px 1px 15px black;
@@ -133,44 +165,96 @@ input:valid~label{
     background-attachment: fixed;
     padding: 100px;
 }
-.imagem > a{
+
+.imagem>a {
     margin-top: 30px;
 }
-.imagem > h1 {
+
+.imagem>h1 {
     padding: 10px;
     margin: 30px 0px;
     box-shadow: inset 1px 1px 30px black;
 
 }
-#inicio{
-    background-image: url("../imagens/nos_nessa_porra.JPG");
+
+#inicio {
+    background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../imagens/nos_nessa_porra.JPG");
     background-position: center top;
 }
-.normal{
-    width: 70vw;
+
+.normal {
+    width: 100%;
     padding-bottom: 20px;
     margin: auto;
     background-color: white;
     box-shadow: 1px 1px 15px black;
 }
-.normal-group{
+
+.normal > h1{
+    margin: auto;
+}
+
+.normal-group {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap-reverse;
 }
-.normal > .normal-group > img{
+
+.normal>.normal-group>img {
     margin: 30px;
     min-width: 100px;
     max-width: 400px;
     box-shadow: 1px 1px 15px rgb(238, 0, 255);
+    border-radius: 10px;
 }
-.normal > .normal-group > .paragrafos > p{
+
+.normal>.normal-group>.paragrafos>p {
     min-width: 300px;
     max-width: 400px;
     margin: 30px;
     text-align: justify;
     font-size: larger;
 }
-.paragrafos{
-    width: 40%;
+
+.paragrafos {
+    min-width: 350px;
+    max-width: 500px;
+}
+
+#cortes {}
+
+.cortes {
+    display: grid;
+    text-align: center;
+}
+
+.img-corte {
+    margin: 10px 5px 0px 0px;
+    border-radius: 10px;
+}
+
+.cortes-linha>img {
+    min-width: 100px;
+    max-width: 300px;
+}
+
+.servicos-item{
+    margin-top: 10px;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    font-size: larger;
+}
+
+.servicos-item > p{
+    margin: 10px;
+}
+
+.servicos-item > .servicos-preco{
+    color: darkgoldenrod;
+    font-size: larger;
 }
