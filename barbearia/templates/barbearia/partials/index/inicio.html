@@ -1,8 +1,22 @@
 {% load static %}
-<div class="imagem" id="inicio">
-  <h1>O corte certo para o homem certo</h1>
-  <div class="botoes">
-    <a class="btn btn_azuis" href="{% url 'barbearia:agendar' %}">Agendar Horário</a>
-    <a class="btn btn_azuis" href="#servicos">Ver serviços</a>
-  </div>
-</div>
+<!-- HERO -->
+        <section id="inicio" class="secao-hero" >
+            <div class="hero-conteudo">
+                <div>
+                    <h1 class="hero-titulo" id="hero-titulo">
+                        O corte certo<br>para o <em>homem certo</em>
+                    </h1>
+                    <p class="hero-descricao">
+                        Tradição, estilo e precisão em cada navalha. A Barbearia Azul é o seu espaço para
+                        cuidar da imagem e renovar a confiança — no coração de Cubatão.
+                    </p>
+                    <div class="hero-botoes">
+                        <a href="{% url "barbearia:agendar" %}" class="botao-primario">Agendar horário</a>
+                        <a href="#servicos" class="botao-secundario">Ver serviços</a>
+                    </div>
+                </div>
+                <figure class="hero-imagem" aria-label="Foto da barbearia">
+                    <img src="{% static 'global/imagens/logo.jpg' %}" alt="Interior da Barbearia Azul" width="100%">
+                </figure>
+            </div>
+        </section>

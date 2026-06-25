@@ -1,29 +1,24 @@
-<header class="header">
-        <h1 class="header-heading">
-            <a href="{% url "barbearia:home" %}" class="header-link">
-                Agenda
-            </a>
-        </h1>
-        <nav class="menu">
-            <ul class="menu-list">
-                {% if user.is_authenticated %}
-                    <li class="menu-item">
-                        <a href="{% url "barbearia:agendar" %}" class="menu-link">Agendar</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="" class="menu-link">Profile</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="{% url "barbearia:logout" %}" class="menu-link">Logout</a>
-                    </li>
-                {% else %}
-                    <li class="menu-item">
-                        <a href="{% url "barbearia:login" %}" class="menu-link">Login</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="{% url "barbearia:register" %}" class="menu-link">Register</a>
-                    </li>
-                {% endif %}
-            </ul>
-        </nav>
-    </header>
+{% load static %}
+<!-- NAVEGAÇÃO -->
+<header>
+  <nav class="navegacao">
+    <a href="{% url 'barbearia:home' %}" class="navegacao-logo">
+      <img src="{% static 'global/imagens/logo2_sem_fundo.png' %}" alt="Logo" width="22px" />
+      Cutz <span>BarberShop</span>
+    </a>
+    <ul class="navegacao-menu">
+      <li><a href="{% url 'barbearia:home' %}">Início</a></li>
+      {% if template_name == 'home.html' %}
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+      {% endif %}
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'barbearia:agendar' %}">Agendar</a></li>
+        <li><a href="{% url 'barbearia:logout' %}">Logout</a></li>
+      {% else %}
+        <li class="menu-item"><a href="{% url 'barbearia:login' %}" class="menu-link">Login</a></li>
+        <li class="menu-item"><a href="{% url 'barbearia:register' %}" class="menu-link">Register</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</header>

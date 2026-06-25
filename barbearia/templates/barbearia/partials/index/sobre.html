@@ -1,12 +1,63 @@
-{% load static %}
-<div class="normal">
-  <div class="normal-group">
-      <div class="paragrafos">
-        <p>Mais do que um lugar para cortar o cabelo ou aparar a barba, nossa barbearia foi criada para oferecer uma experiência completa de cuidado, conforto e estilo. Contamos com profissionais qualificados, atendimento personalizado e um ambiente moderno e acolhedor, pensado para que cada cliente se sinta à vontade desde o momento em que entra.</p>
-        <p>Aqui, cada corte é realizado com atenção aos detalhes e às preferências de cada pessoa, unindo técnicas tradicionais e tendências atuais para garantir um resultado que valorize seu estilo. Seja para um corte clássico, um visual moderno, o cuidado com a barba ou um acabamento impecável, estamos preparados para oferecer um serviço de alta qualidade.</p>
-        <p>Nosso compromisso é proporcionar excelência no atendimento, pontualidade e um ambiente agradável, onde você pode relaxar enquanto recebe um serviço feito com dedicação e profissionalismo. Agende seu horário e venha descobrir por que nossa barbearia é o lugar ideal para renovar seu visual e elevar sua autoestima.</p>
+<!-- SOBRE -->
+<section id="sobre" class="secao secao-clara">
+  <div class="secao-interno">
+    <header class="secao-cabecalho">
+      <h2 class="secao-titulo" id="sobre-titulo">Sobre a barbearia</h2>
+    </header>
+    <div class="sobre-grade">
+      <div class="sobre-texto">
+        <p>
+          Mais do que um lugar para cortar o cabelo ou aparar a barba, nossa barbearia foi criada para oferecer uma experiência completa de cuidado, conforto e estilo. Contamos com profissionais qualificados, atendimento personalizado e um ambiente moderno e acolhedor, pensado para que cada cliente se sinta à vontade desde o momento em que entra.
+        </p>
+        <p>
+          Aqui, cada corte é realizado com atenção aos detalhes e às preferências de cada pessoa, unindo técnicas tradicionais e tendências atuais para garantir um resultado que valorize seu estilo. Seja para um corte clássico, um visual moderno, o cuidado com a barba ou um acabamento impecável, estamos preparados para oferecer um serviço de alta qualidade.
+        </p>
+        <p>
+          Nosso compromisso é proporcionar excelência no atendimento, pontualidade e um ambiente agradável, onde você pode relaxar enquanto recebe um serviço feito com dedicação e profissionalismo. Agende seu horário e venha descobrir por que nossa barbearia é o lugar ideal para renovar seu visual e elevar sua autoestima.
+        </p>
       </div>
-      <img src="{% static 'global/imagens/ambiente-1.jpg' %}" alt="Ambiente da barbearia" />
+      <div class="sobre-valores">
+        <article class="valor-card">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bullseye"
+            viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+            <path d="M8 13A5 5 0 1 1 8 3a5 5 0 0 1 0 10m0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12" />
+            <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8" />
+            <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+          </svg>
+          <p class="valor-nome">Missão</p>
+          <p class="valor-descricao">Elevar a autoestima do homem com precisão e cuidado</p>
+        </article>
+        <article class="valor-card">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+            viewBox="0 0 16 16">
+            <path
+              d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+          </svg>
+          <p class="valor-nome">Visão</p>
+          <p class="valor-descricao">Ser a barbearia mais respeitada da Baixada Santista</p>
+        </article>
+        <article class="valor-card">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trophy-fill"
+            viewBox="0 0 16 16">
+            <path
+              d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5q0 .807-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5m.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935m10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935" />
+          </svg>
+          <p class="valor-nome">Qualidade</p>
+          <p class="valor-descricao">Produtos e técnicas profissionais em cada atendimento</p>
+        </article>
+        <article class="valor-card">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-person-raised-hand" viewBox="0 0 16 16">
+            <path
+              d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207" />
+            <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+          </svg>
+          <p class="valor-nome">Respeito</p>
+          <p class="valor-descricao">Atendimento honesto, pontual e sem enrolação</p>
+        </article>
+      </div>
+    </div>
   </div>
-  <a href="{% url "barbearia:agendar" %}" class="btn btn_azuis">Agendar Horário</a>
-</div>
+</section>

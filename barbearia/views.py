@@ -24,6 +24,7 @@ def home(request):
     context = {
         'site_title': 'Home - ',
         'agendamentos': [agendamentos_prox, agendamentos_pass],
+        'template_name': 'home.html',
     }
     
     return render(

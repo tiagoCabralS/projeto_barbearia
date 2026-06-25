@@ -11,6 +11,15 @@ class AgendamentoForm(forms.ModelForm):
         fields = (
             'date', 'category',
         )
+        
+        widgets = {
+            'date': forms.DateTimeInput(
+                attrs={'class': 'formulario-campo', 'type': 'datetime-local', 'placeholder': 'Data e hora do agendamento'}
+                ),
+            'category': forms.Select(
+                attrs = {'class': 'formulario-campo', 'type': 'select'}
+            )
+        }
     
     def clean(self):
         cleaned_data = super().clean()
