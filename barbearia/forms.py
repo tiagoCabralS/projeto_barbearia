@@ -27,10 +27,12 @@ class AgendamentoForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super().clean()
         date = cleaned_data.get('date')
+        horario = cleaned_data.get('horario')
+        fim = cleaned_data.get('fim')
         
         if date and date <= timezone.now().date():
             self.add_error('date', ValidationError('A data e hora do agendamento devem ser no futuro.', code='invalid'))
-        if date and Agendamento.objects.filter(date=date).exists():
+        if date and Agendamento.objects.filter(date=date).exists() and Agendamento.objects.filter(horario=horario).exists():
             self.add_error('date', ValidationError('Já existe um agendamento para esta data e hora.', code='invalid'))
         
         return cleaned_data

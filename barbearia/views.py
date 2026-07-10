@@ -44,6 +44,7 @@ def agendar(request):
         context = {
             'from_action': from_action,
             'form': form,
+            'template': 'agendar',
         }
         if form.is_valid():
             objeto = form.save(commit=False)
@@ -62,6 +63,7 @@ def agendar(request):
     context = {
         'form': AgendamentoForm(),
         'site_title': 'Agendar - ',
+        'template': 'agendar',
     }
     
     return render(

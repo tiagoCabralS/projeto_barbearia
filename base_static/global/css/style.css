@@ -490,6 +490,80 @@ body {
     color: var(--dourado);
 }
 
+/* Container do calendário com estilo moderno */
+.calendario {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    width: 340px;
+}
+
+/* Cabeçalho do calendário com mês e ano */
+.calendario-header {
+    background-color: #4a90e2;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* Estilização da tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Estilo dos cabeçalhos dos dias */
+th {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: #666;
+}
+
+/* Estilo das células de dias */
+td {
+    text-align: center;
+    /*padding: 10px;*/
+    border: 1px solid #e0e0e0;
+    transition: background-color 0.3s ease;
+}
+
+td div {
+    padding: 10px;
+}
+
+/* Efeito de hover nos dias */
+td:hover {
+    background-color: #e6f2ff;
+    cursor: pointer;
+}
+
+/* Destaque para o dia atual */
+.dia-atual {
+    background-color: #4a90e2;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+}
+
+/* Dias de fim de semana com cor diferente */
+.fim-de-semana {
+    color: #888;
+}
+
+.nao_clicavel {
+    pointer-events: none;
+    text-decoration-line: line-through;
+    text-decoration-color: red;
+}
+
 /* ─── RESPONSIVO ─── */
 @media (max-width: 900px) {
     .navegacao {

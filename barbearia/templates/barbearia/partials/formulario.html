@@ -1,9 +1,13 @@
+{% load static %}
 <section class="secao secao-clara">
     <div class="secao-interno">
         <header class="secao-cabecalho">
             <h2 class="secao-titulo">{{ site_title }}Barbearia</h2>
         </header>
     </div>
+    {% if template == 'agendar' %}
+        {% include "barbearia/partials/agendar/calendario.html" %}
+    {% endif %}
     <form class="formulario" action="{{ form_action }}" method="POST">
         {% csrf_token %}
         <div class="form-content">
