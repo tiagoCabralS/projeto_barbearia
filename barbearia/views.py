@@ -49,6 +49,7 @@ def agendar(request):
             objeto = form.save(commit=False)
             data_fake = datetime.combine(datetime.today(), objeto.horario)
             objeto.fim = (data_fake + timedelta(hours=1)).time()
+            objeto.cliente = request.user
             objeto.save()
             return redirect('barbearia:home')
         
