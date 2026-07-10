@@ -17,7 +17,8 @@ class Category(models.Model):
         return self.name
 
 class Agendamento(models.Model):
-    date = models.DateField()  
+    date = models.DateField() 
+    horario = models.TimeField(default=timezone.now().time()) 
     category = models.ForeignKey(
         Category, 
         blank=True,
