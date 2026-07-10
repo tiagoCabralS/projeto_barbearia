@@ -9,7 +9,7 @@ class AgendamentoForm(forms.ModelForm):
     class Meta:
         model = Agendamento
         fields = (
-            'date', 'category',
+            'date', 'horario', 'category', 
         )
         
         widgets = {
@@ -18,6 +18,9 @@ class AgendamentoForm(forms.ModelForm):
                 ),
             'category': forms.Select(
                 attrs = {'class': 'formulario-campo', 'type': 'select'}
+            ),
+            'horario': forms.TimeInput(
+                attrs = {'class': 'formulario-campo', 'type': 'time', 'placeholder': 'Horário do agendamento'}
             )
         }
     
