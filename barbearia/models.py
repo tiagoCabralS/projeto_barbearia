@@ -18,7 +18,8 @@ class Category(models.Model):
 
 class Agendamento(models.Model):
     date = models.DateField() 
-    horario = models.TimeField() 
+    horario = models.TimeField()
+    fim = models.TimeField(null=True)
     category = models.ForeignKey(
         Category, 
         blank=True,
