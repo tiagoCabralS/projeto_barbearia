@@ -7,6 +7,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from barbearia.forms import UserRegistrationForm
+from datetime import timedelta, datetime
 
 # Create your views here.
 
@@ -45,7 +46,10 @@ def agendar(request):
             'form': form,
         }
         if form.is_valid():
-            form.save()
+            objeto = form.save(commit=False)
+            data_fake = datetime.combine(datetime.today(), objeto.horario)
+            objeto.fim = (data_fake + timedelta(hours=1)).time()
+            objeto.save()
             return redirect('barbearia:home')
         
         return render(
