@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from datetime import datetime, timedelta
 
 class AgendamentoForm(forms.ModelForm):
     class Meta:
@@ -28,12 +29,25 @@ class AgendamentoForm(forms.ModelForm):
         cleaned_data = super().clean()
         date = cleaned_data.get('date')
         horario = cleaned_data.get('horario')
-        fim = cleaned_data.get('fim')
+        data_fake = datetime.combine(datetime.today(), horario)
+        fim = (data_fake + timedelta(hours=1)).time()
+        
+        print(horario, fim)
         
         if date and date <= timezone.now().date():
             self.add_error('date', ValidationError('A data e hora do agendamento devem ser no futuro.', code='invalid'))
         if date and Agendamento.objects.filter(date=date).exists() and Agendamento.objects.filter(horario=horario).exists():
             self.add_error('date', ValidationError('Já existe um agendamento para esta data e hora.', code='invalid'))
+        # Checar se o horário está sobrepondo os horários de algum agendamento já existente
+        if Agendamento.objects.filter(date=date):
+            agendamentos = Agendamento.objects.filter(date=date)
+            print(agendamentos)
+            for agendamento in agendamentos:
+                print(agendamento.horario)
+                if agendamento.horario <= horario and agendamento.fim >= horario:
+                    self.add_error('date', ValidationError('Horário indisponível, pois sobrepõe outro agendamento.', code='invalid'))
+                if agendamento.horario <= fim and agendamento.fim >= fim:
+                    self.add_error('date', ValidationError('Horário indisponível, pois sobrepõe outro agendamento.', code='invalid'))
         
         return cleaned_data
 
