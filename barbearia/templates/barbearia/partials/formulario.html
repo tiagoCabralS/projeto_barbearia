@@ -13,8 +13,8 @@
         <div class="form-content">
             {% for field in form %}
             <div class="formulario-grupo">
-                {{ field }}
                 <label class="formulario-rotulo" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
                 {% if field.errors %}
                 <div class="error">{{ field.errors }}</div>
                 {% endif %}

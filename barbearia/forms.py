@@ -52,19 +52,70 @@ class AgendamentoForm(forms.ModelForm):
         return cleaned_data
 
 class UserRegistrationForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30, required=True)
-    last_name = forms.CharField(max_length=150, required=True)
-    username = forms.CharField(max_length=150, required=True)
-    email = forms.EmailField(required=True)
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput, required=True)
-    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput, required=True)
+    first_name = forms.CharField(
+        max_length=30, 
+        required=True,
+        widget=forms.TextInput(
+            attrs={'class': 'formulario-campo', 'placeholder': 'Nome'}
+            )
+        )
+    last_name = forms.CharField(
+        max_length=150, 
+        required=True,
+        widget=forms.TextInput(
+            attrs={'class': 'formulario-campo', 'placeholder': 'Sobrenome'}
+            )
+        )
+    username = forms.CharField(
+        max_length=150, 
+        required=True,
+        widget=forms.TextInput(
+            attrs={'class': 'formulario-campo', 'placeholder': 'Username'}
+            )
+        )
+    email = forms.EmailField(
+        required=True,
+        widget=forms.EmailInput(
+            attrs={'class': 'formulario-campo', 'placeholder': 'Email'}
+            )
+        )
+    password1 = forms.CharField(
+        label='Password', 
+        widget=forms.PasswordInput(
+            attrs={'class': 'formulario-campo', 'placeholder': 'Senha'}), 
+        required=True
+        )
+    password2 = forms.CharField(
+        label='Confirm Password', 
+        widget=forms.PasswordInput(
+            attrs={'class': 'formulario-campo', 'placeholder': 'Confirme a senha'}), 
+        required=True
+        )
     
     class Meta:
         model = User
         fields = [
             'first_name', 'last_name', 'username', 'email', 'password1', 'password2',
         ]
-    
+        
+        widgets = {
+            'last_name': forms.TextInput(
+                attrs={'class': 'formulario-campo', 'type': 'text', 'placeholder': 'Sobrenome'}
+            ),
+            'username': forms.TextInput(
+                attrs={'class': 'formulario-campo', 'type': 'text', 'placeholder': 'Username'}
+            ),
+            'email': forms.EmailInput(
+                attrs={'class': 'formulario-campo', 'type': 'email', 'placeholder': 'Email'}
+            ),
+            'password1': forms.PasswordInput(
+                attrs={'class': 'formulario-campo', 'type': 'password', 'placeholder': 'Senha'}
+            ),
+            'password2': forms.PasswordInput(
+                attrs={'class': 'formulario-campo', 'type': 'password', 'placeholder': 'Repita a senha'}
+            )
+        }            
+            
     def clean(self):
         cleaned_data = super().clean()
         password1 = cleaned_data.get('password1')
