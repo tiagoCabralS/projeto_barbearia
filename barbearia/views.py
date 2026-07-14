@@ -87,6 +87,7 @@ def agendamento_update(request, agendamento_id):
         context = {
             'from_action': from_action,
             'form': form,
+            'template': 'agendar',
         }
         if form.is_valid():
             form.save()
@@ -101,6 +102,7 @@ def agendamento_update(request, agendamento_id):
     context = {
         'form': AgendamentoForm(instance=agendamento),
         'site_title': f'Atualizar Agendamento {agendamento_id} - ',
+        'template': 'agendar',
     }
     
     return render(
