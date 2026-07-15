@@ -6,6 +6,7 @@
             <p>ID: {{ agendamento.id }}</p>
             <p>Data: {{ agendamento.date }}</p>
             <p>Categoria: {{ agendamento.category }}</p>
+            <p>Cliente: {{ agendamento.cliente }}</p>
         </div>
         <div class="botoes">
             <a class="btn btn_azuis" href="{% url "barbearia:update" agendamento.id %}">Update</a>
