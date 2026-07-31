@@ -34,7 +34,7 @@ class AgendamentoForm(forms.ModelForm):
         
         print(horario, fim)
         
-        if date and date <= timezone.now().date():
+        if date and date < timezone.now().date():
             self.add_error('date', ValidationError('A data e hora do agendamento devem ser no futuro.', code='invalid'))
         if date and Agendamento.objects.filter(date=date).exists() and Agendamento.objects.filter(horario=horario).exists():
             self.add_error('date', ValidationError('Já existe um agendamento para esta data e hora.', code='invalid'))
