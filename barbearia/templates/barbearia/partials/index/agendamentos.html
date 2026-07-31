@@ -1,20 +1,16 @@
 <div class="agendamentos">
   <h2>Proximos Agendamentos</h2>
   {% for agendamento in agendamentos.0 %}
-    {% if agendamento.cliente.id == user.id %}
-        <p>
-          <a href="{% url 'barbearia:agendamento_detail' agendamento.id %}">{{ agendamento.id }}</a> | {{ agendamento.date }} | {{ agendamento.category }}
-        </p>
-    {% endif %}
+    <p>
+      <a href="{% url 'barbearia:agendamento_detail' agendamento.id %}">{{ agendamento.id }}</a> | {{ agendamento.date }} | {{ agendamento.category }}
+    </p>
   {% endfor %}
-    </div>
-    <div class="agendamentos">
-      <h2>Agendamentos Passados</h2>
-      {% for agendamento in agendamentos.1 %}
-        {% if agendamento.cliente.id == user.id %}
-          <p>
-            <a href="{% url 'barbearia:agendamento_detail' agendamento.id %}">{{ agendamento.id }}</a> | {{ agendamento.date }} | {{ agendamento.category }}
-          </p>
-        {% endif %}
-      {% endfor %}
+  <div class="agendamentos">
+    <h2>Agendamentos Passados</h2>
+    {% for agendamento in agendamentos.1 %}
+      <p>
+        <a href="{% url 'barbearia:agendamento_detail' agendamento.id %}">{{ agendamento.id }}</a> | {{ agendamento.date }} | {{ agendamento.category }}
+      </p>
+    {% endfor %}
+  </div>
 </div>

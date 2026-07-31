@@ -14,12 +14,12 @@ from datetime import timedelta, datetime
 def home(request):
     agendamentos_prox = Agendamento\
         .objects\
-        .filter(date__gte=timezone.now())\
+        .filter(date__gte=timezone.now(), cliente=request.user)\
         .order_by('date')
     
     agendamentos_pass = Agendamento\
         .objects\
-        .filter(date__lt=timezone.now())\
+        .filter(date__lt=timezone.now(), cliente=request.user)\
         .order_by('date')
     
     context = {
