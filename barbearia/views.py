@@ -12,14 +12,16 @@ from datetime import timedelta, datetime
 # Create your views here.
 
 def home(request):
+    usuario_atual = request.user.id
+    
     agendamentos_prox = Agendamento\
         .objects\
-        .filter(date__gte=timezone.now(), cliente=request.user)\
+        .filter(date__gte=timezone.now(), cliente=usuario_atual)\
         .order_by('date')
     
     agendamentos_pass = Agendamento\
         .objects\
-        .filter(date__lt=timezone.now(), cliente=request.user)\
+        .filter(date__lt=timezone.now(), cliente=usuario_atual)\
         .order_by('date')
     
     context = {
