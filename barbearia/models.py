@@ -16,6 +16,17 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class Perfil(models.Model):
+    usuario = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name='perfil',
+    )
+    telefone = models.CharField(max_length=20, blank=True)
+
+    def __str__(self):
+        return self.usuario.username
+
 class Agendamento(models.Model):
     date = models.DateField() 
     horario = models.TimeField()

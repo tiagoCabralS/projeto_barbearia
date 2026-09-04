@@ -52,6 +52,13 @@ class AgendamentoForm(forms.ModelForm):
         return cleaned_data
 
 class UserRegistrationForm(UserCreationForm):
+    telefone = forms.CharField(
+        max_length=20,
+        required=True,
+        widget=forms.TextInput(
+            attrs={'class': 'formulario-campo', 'placeholder': 'Telefone'}
+        )
+    )
     first_name = forms.CharField(
         max_length=30, 
         required=True,
@@ -95,7 +102,8 @@ class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = [
-            'first_name', 'last_name', 'username', 'email', 'password1', 'password2',
+            'first_name', 'last_name', 'username', 'email', 'telefone',
+            'password1', 'password2',
         ]
         
         widgets = {

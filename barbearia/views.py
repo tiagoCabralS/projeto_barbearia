@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from barbearia.models import Agendamento
+from barbearia.models import Agendamento, Perfil
 from barbearia.forms import AgendamentoForm
 from django.utils import timezone
 from django.contrib.auth.forms import AuthenticationForm
@@ -159,7 +159,8 @@ def register(request):
         form = UserRegistrationForm(request.POST)
         
         if form.is_valid():
-            form.save()
+            user = form.save()
+            Perfil.objects.create(usuario=user, telefone=form.cleaned_data['telefone'])
             messages.success(request, 'Registro realizado com sucesso! Agora você pode fazer login.')
             return redirect('barbearia:login')
         messages.error(request, 'Registro falhou. Verifique os erros e tente novamente.')

@@ -9,3 +9,7 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(models.Agendamento)
 class AgendamentoAdmin(admin.ModelAdmin):
     list_display = ('date', 'category')
+
+@admin.register(models.Perfil)
+class PerfilAdmin(admin.ModelAdmin):
+    list_display = ('usuario', 'telefone')
