@@ -76,7 +76,7 @@ projeto_barbearia/
    CREATE DATABASE barbearia;
    ```
 
-   As credenciais de conexão em `project/settings.py` já estão configuradas para um ambiente local padrão (`root`, sem senha, `localhost:3306`). Ajuste conforme sua instalação, se necessário.
+   As credenciais de conexão em `project/settings.py` já estão configuradas para um ambiente local padrão (`root`, sem senha, `localhost:3306`)(Configurações utilizadas dessa forma por se tratar de um ambiente de estudo). Ajuste conforme sua instalação, se necessário.
 
 5. **Aplique as migrações**
    ```bash
