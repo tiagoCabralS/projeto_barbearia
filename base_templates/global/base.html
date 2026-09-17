@@ -15,6 +15,12 @@
 </head>
 <body>
     {% include "global/partials/_header.html" %}
+    {% if user.is_authenticated and request.session.telefone_pendente %}
+        <div class="aviso-telefone" role="alert">
+            Seu cadastro está incompleto. Adicione seu telefone para continuar:
+            <a href="{% url 'barbearia:completar_telefone' %}">resolver pendência</a>.
+        </div>
+    {% endif %}
     {% block content %}{% endblock content %}
     {% include "global/partials/_rodape.html" %}
     <script type="module" src="{% static 'global/js/script.js' %}"></script>

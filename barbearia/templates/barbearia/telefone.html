@@ -1,0 +1,35 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+<main class="auth-pagina">
+    <section class="auth-cartao" aria-labelledby="telefone-titulo">
+        <p class="auth-sobrelinha">Cutz Barbershop</p>
+        <h1 id="telefone-titulo" class="auth-titulo">Adicione seu telefone</h1>
+        <div class="aviso-telefone aviso-telefone-inline" role="alert">
+            Seu cadastro está pendente. Adicione um número de telefone para continuar usando a aplicação.
+        </div>
+        <p class="auth-descricao">
+            Precisamos desse número para concluir seu cadastro e confirmar seus agendamentos.
+        </p>
+
+        <form class="auth-formulario" method="post">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                <div class="auth-erros">{{ form.non_field_errors }}</div>
+            {% endif %}
+
+            {% for field in form %}
+                <div class="auth-grupo">
+                    <label class="auth-rotulo" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="auth-erros">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button class="formulario-botao" type="submit">Salvar telefone</button>
+        </form>
+    </section>
+</main>
+{% endblock content %}

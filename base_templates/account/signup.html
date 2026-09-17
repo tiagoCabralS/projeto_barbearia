@@ -1,0 +1,44 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+<main class="auth-pagina">
+    <section class="auth-cartao" aria-labelledby="signup-titulo">
+        <p class="auth-sobrelinha">Cutz Barbershop</p>
+        <h1 id="signup-titulo" class="auth-titulo">Finalize seu cadastro</h1>
+        <p class="auth-descricao">
+            Confirme seus dados para criar sua conta na barbearia.
+        </p>
+
+        <form class="auth-formulario" method="post" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+            {{ redirect_field }}
+
+            {% if form.non_field_errors %}
+                <div class="auth-erros">{{ form.non_field_errors }}</div>
+            {% endif %}
+
+            {% for field in form %}
+                <div class="auth-grupo">
+                    <label class="auth-rotulo" for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <p class="auth-ajuda">{{ field.help_text }}</p>
+                    {% endif %}
+                    {% if field.errors %}
+                        <div class="auth-erros">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button class="formulario-botao" type="submit">Finalizar cadastro</button>
+        </form>
+
+        <p class="auth-rodape">
+            Já possui uma conta?
+            <a href="{% url 'account_login' %}">Entrar</a>
+        </p>
+    </section>
+</main>
+{% endblock content %}

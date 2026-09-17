@@ -66,7 +66,7 @@ projeto_barbearia/
 
 3. **Instale as dependências**
    ```bash
-   pip install django mysqlclient
+   pip install -r requirements.txt
    ```
 
 4. **Configure o banco de dados**
@@ -83,6 +83,8 @@ projeto_barbearia/
    python manage.py migrate
    ```
 
+   No painel administrativo, cadastre um site com domínio `127.0.0.1:8000` e uma aplicação social do Google em **Social applications**, informando o Client ID e o Client Secret. Use `http://127.0.0.1:8000/accounts/google/login/callback/` como URI de redirecionamento autorizado no Google Cloud.
+
 6. **Crie um superusuário (opcional, para acessar o admin)**
    ```bash
    python manage.py createsuperuser
@@ -97,7 +99,6 @@ projeto_barbearia/
 
 ## 🔮 Possíveis melhorias futuras
 
-- Integração de login com Google (ou outros provedores de autenticação social)
 - Notificações automáticas por e-mail/WhatsApp lembrando o cliente do agendamento
 - Painel administrativo específico para o barbeiro gerenciar a agenda
 - Deploy em ambiente de produção

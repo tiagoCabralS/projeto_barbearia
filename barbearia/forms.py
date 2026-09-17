@@ -133,3 +133,27 @@ class UserRegistrationForm(UserCreationForm):
             self.add_error('password2', ValidationError('As senhas não coincidem.', code='invalid'))
         
         return cleaned_data
+
+
+class TelefoneForm(forms.Form):
+    telefone = forms.CharField(
+        label='Telefone',
+        max_length=20,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'formulario-campo',
+                'placeholder': '(00) 00000-0000',
+                'autocomplete': 'tel',
+            }
+        ),
+    )
+
+    def clean_telefone(self):
+        telefone = self.cleaned_data['telefone'].strip()
+        quantidade_digitos = sum(caractere.isdigit() for caractere in telefone)
+
+        if quantidade_digitos < 10 or quantidade_digitos > 15:
+            raise ValidationError('Informe um número de telefone válido.')
+
+        return telefone

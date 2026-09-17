@@ -1,17 +1,33 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from barbearia.models import Agendamento, Perfil
-from barbearia.forms import AgendamentoForm
+from barbearia.forms import AgendamentoForm, TelefoneForm
 from django.utils import timezone
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from barbearia.forms import UserRegistrationForm
+from allauth.socialaccount.models import SocialAccount
 from datetime import timedelta, datetime
 
 # Create your views here.
 
 def home(request):
+    perfil = None
+    if request.user.is_authenticated:
+        perfil, _ = Perfil.objects.get_or_create(usuario=request.user)
+
+    cadastro_social_incompleto = (
+        request.user.is_authenticated
+        and perfil is not None
+        and not perfil.telefone
+        and SocialAccount.objects.filter(user=request.user).exists()
+    )
+
+    if request.session.get('telefone_pendente') or cadastro_social_incompleto:
+        request.session['telefone_pendente'] = True
+        return redirect('barbearia:completar_telefone')
+
     usuario_atual = request.user.id
     
     agendamentos_prox = Agendamento\
@@ -35,6 +51,28 @@ def home(request):
         'barbearia/index.html',
         context
         )
+
+
+@login_required(login_url='barbearia:login')
+def completar_telefone(request):
+    perfil, _ = Perfil.objects.get_or_create(usuario=request.user)
+    form = TelefoneForm(request.POST or None, initial={'telefone': perfil.telefone})
+
+    if request.method == 'POST' and form.is_valid():
+        perfil.telefone = form.cleaned_data['telefone']
+        perfil.save(update_fields=['telefone'])
+        request.session.pop('telefone_pendente', None)
+        messages.success(request, 'Telefone cadastrado com sucesso!')
+        return redirect('barbearia:home')
+
+    return render(
+        request,
+        'barbearia/telefone.html',
+        {
+            'site_title': 'Telefone - ',
+            'form': form,
+        },
+    )
 
 @login_required(login_url='barbearia:login')
 def agendar(request):
