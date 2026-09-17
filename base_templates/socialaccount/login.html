@@ -1,0 +1,31 @@
+{% extends "global/base.html" %} {% load socialaccount %} {% block content %}
+<section class="auth-page">
+  <div class="auth-card">
+    <div class="auth-header">
+      <p class="auth-menu-title">Menu:</p>
+      <nav class="auth-menu" aria-label="Menu de autenticação">
+        <a href="{% url 'barbearia:login' %}" class="auth-menu-item">Entrar</a>
+        <a href="{% url 'barbearia:register' %}" class="auth-menu-item"
+          >Cadastrar-se</a
+        >
+      </nav>
+    </div>
+
+    <div class="auth-content">
+      <h1 class="auth-title">Entrar via Google</h1>
+
+      <p class="auth-text">
+        Você está prestes a fazer login usando uma conta de terceiros do Google.
+      </p>
+
+      <form
+        method="post"
+        action="{% provider_login_url 'google' process='login' %}"
+      >
+        {% csrf_token %}
+        <button type="submit" class="auth-button">Continuar</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
