@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from datetime import datetime, timedelta
 
 class AgendamentoForm(forms.ModelForm):
@@ -50,6 +51,21 @@ class AgendamentoForm(forms.ModelForm):
                     self.add_error('date', ValidationError('Horário indisponível, pois sobrepõe outro agendamento.', code='invalid'))
         
         return cleaned_data
+
+class UserLoginForm(AuthenticationForm):
+    username = forms.CharField(
+            max_length=150, 
+            required=True,
+            widget=forms.TextInput(
+                attrs={'class': 'formulario-campo', 'placeholder': 'Username'}
+                )
+            )
+    password = forms.CharField(
+            label='Senha', 
+            widget=forms.PasswordInput(
+                attrs={'class': 'formulario-campo', 'placeholder': 'Senha'}), 
+            required=True
+            )
 
 class UserRegistrationForm(UserCreationForm):
     telefone = forms.CharField(

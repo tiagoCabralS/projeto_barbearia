@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from barbearia.models import Agendamento, Perfil
-from barbearia.forms import AgendamentoForm, TelefoneForm
+from barbearia.forms import AgendamentoForm, TelefoneForm, UserRegistrationForm, UserLoginForm
 from django.utils import timezone
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
-from barbearia.forms import UserRegistrationForm
 from allauth.socialaccount.models import SocialAccount
 from datetime import timedelta, datetime
 
@@ -213,10 +212,10 @@ def register(request):
     )
     
 def login(request):
-    form = AuthenticationForm(request)
+    form = UserLoginForm(request)
     
     if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
+        form = UserLoginForm(request, data=request.POST)
         
         if form.is_valid():
             user = form.get_user()
